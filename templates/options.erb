@@ -1,0 +1,65 @@
+options
+{
+<% if version != "" %>        version "<%= version %>";
+<% end -%>
+        directory "<%= directory %>";
+        dump-file "<%= dump_file %>";
+        statistics-file "<%= statistics_file %>";
+        memstatistics-file "<%= memstatistics_file %>";
+        max-cache-size <%= max_cache_size %>;
+
+        listen-on port <%= listen_on_port %> {
+<% listen_on.each do |listen_on_from| -%>
+            <%= listen_on_from %>;
+<% end -%>
+        };
+
+        listen-on-v6 port <%= listen_on_v6_port %> {
+<% listen_on_v6.each do |listen_on_v6_from| -%>
+            <%= listen_on_v6_from %>;
+<% end -%>
+        };
+
+        allow-query {
+<% allow_query.each do |allow_query_from| -%>
+            <%= allow_query_from %>;
+<% end -%>
+        };
+        allow-query-cache {
+<% allow_query_cache.each do |allow_query_cache_from| -%>
+            <%= allow_query_cache_from %>;
+<% end -%>
+        };
+        allow-transfer {
+<% allow_transfer.each do |allow_transfer_from| -%>
+            <%= allow_transfer_from %>;
+<% end -%>
+        };
+<% if has_variable?(allow_update) %>    allow-update {
+<% allow_update.each do |allow_update_1| -%>
+        <%= allow_update_1 %>;
+<% end -%>
+    };
+<% end -%>
+<% if blackhole.length > 0 %>    blackhole {
+<% blackhole.each do |blackhole_1| -%>
+        <%= blackhole_1 %>;
+<% end -%>
+    };
+<% end -%>
+        recursion <%= recursion %>;
+        notify <%= bind_notify %>;
+<% if forward != "" %>    forward <%= forward %>;
+<% end -%>
+<% if forwarders.length > 0 %>    forwarders {
+<% forwarders.each do |forwarders_1| -%>
+        <%= forwarders_1 %>;
+<% end -%>
+    };
+<% end -%>
+
+        dnssec-enable <%= dnssec_enable %>;
+        dnssec-validation <%= dnssec_validation %>;
+        dnssec-lookaside <%= dnssec_lookaside %>;
+};
+

@@ -1,0 +1,17 @@
+server <%= name %> {
+    bogus <%= bogus %>;
+<% if provide_ixfr != "" %>    provide-ixfr <%= provide_ixfr %>;
+<% end -%>
+<% if request_ixfr != "" %>    request-ixfr <%= request_ixfr %>;
+<% end -%>
+<% if request_ixfr != "" %>    request-ixfr <%= request_ixfr %>;
+<% end -%>
+    edns <%= edns %>;
+<% if transfers != "" %>    transfers <%= transfers %>;
+<% end -%>
+<% if transfer_format != "" %>    transfer-format <%= transfer_format %>;
+<% end -%>
+<% if keys != "" %>    keys { <%= keys %>; };
+<% end -%>
+};
+

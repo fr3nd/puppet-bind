@@ -1,0 +1,44 @@
+zone "<%= zone %>" {
+    type <%= zone_type %>;
+<% if allow_notify.length > 0 %>    allow-notify {
+<% allow_notify.each do |allow_notify_1| -%>
+        <%= allow_notify_1 %>;
+<% end -%>
+    };
+<% end -%>
+<% if allow_query.length > 0 %>    allow-query {
+<% allow_query.each do |allow_query_1| -%>
+        <%= allow_query_1 %>;
+<% end -%>
+    };
+<% end -%>
+<% if allow_transfer.length > 0 %>    allow-transfer {
+<% allow_transfer.each do |allow_transfer_1| -%>
+        <%= allow_transfer_1 %>;
+<% end -%>
+    };
+<% end -%>
+<% if allow_update.length > 0 %>    allow-update {
+<% allow_update.each do |allow_update_1| -%>
+        <%= allow_update_1 %>;
+<% end -%>
+    };
+<% end -%>
+<% if file != "" %>    file "<%= file %>";
+<% end -%>
+<% if masters.length > 0 %>    masters {
+<% masters.each do |masters_1| -%>
+        <%= masters_1 %>;
+<% end -%>
+    };
+<% end -%>
+<% if zone_statistics != "" %>    zone-statistics <%= zone_statistics %>;
+<% end -%>
+<% if also_notify.length > 0 %>    also-notify {
+<% also_notify.each do |also_notify_1| -%>
+        <%= also_notify_1 %>;
+<% end -%>
+    };
+<% end -%>
+};
+

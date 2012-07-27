@@ -1,0 +1,14 @@
+$ORIGIN <%= zone %>.
+$TTL <%= zone_ttl %>
+@             IN  SOA  <%= zone_soa %> <%= zone_soa_email %> (
+              %%SERIAL%% ; serial number of this zone file
+              <%= zone_refresh %>         ; slave refresh
+              <%= zone_retry   %>         ; slave retry time in case of a problem
+              <%= zone_expire  %>         ; slave expiration time
+              <%= zone_minimum %>         ; minimum caching time in case of failed lookups
+              )
+
+<% zone_ns.each do |val| -%>
+              IN    NS  <%= val %>
+<% end -%>
+

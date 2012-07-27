@@ -1,0 +1,19 @@
+    channel <%= name %> {
+<% if channel_type == "syslog" -%>
+        syslog <%= syslog_facility %>;
+<% else -%><% if channel_type == "stderr" -%>
+        stderr;
+<% else -%><% if channel_type == "file" -%>
+        file "<%= file %>"<% if versions != "" %> versions <%= versions %><% end %><% if size != "" %> size <%= size %><% end %>;
+<% else -%>
+        null;
+<% end -%><% end -%><% end -%>
+        severity <%= severity %>;
+<% if print_category != "" -%>        print-category <%= print_category %>;
+<% end -%>
+<% if print_severity != "" -%>        print-severity <%= print_severity %>;
+<% end -%>
+<% if print_time != "" -%>        print-time <%= print_time %>;
+<% end -%>
+    };
+
